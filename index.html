@@ -79,10 +79,74 @@
             } else if (userInput.includes("tell me a joke")) {
                 output.textContent = "Why don't scientists trust atoms? Because they make up everything!";
                 speak("Why don't scientists trust atoms? Because they make up everything!");
+            } else if (userInput.includes("how are you")) {
+                output.textContent = "I'm doing great! How can I assist you today?";
+                speak("I'm doing great! How can I assist you today?");
+            } else if (userInput.includes("what is your purpose")) {
+                output.textContent = "My purpose is to assist you with tasks, answer your questions, and make your life easier.";
+                speak("My purpose is to assist you with tasks, answer your questions, and make your life easier.");
+            } else if (userInput.includes("who is your developer")) {
+                output.textContent = "I was developed by Harshvardhan, a talented and skilled developer.";
+                speak("I was developed by Harshvardhan, a talented and skilled developer.");
+            } else if (userInput.includes("what is your favorite color")) {
+                output.textContent = "As an AI, I don't see colors, but I think blue is calming and widely appreciated.";
+                speak("As an AI, I don't see colors, but I think blue is calming and widely appreciated.");
+            } else if (userInput.includes("what is your favorite food")) {
+                output.textContent = "I don't eat food, but I think pizza is a popular choice among humans!";
+                speak("I don't eat food, but I think pizza is a popular choice among humans!");
+            } else if (userInput.includes("open a website")) {
+                output.textContent = "Please tell me the website name or URL.";
+                speak("Please tell me the website name or URL.");
+            } else if (userInput.includes("visit")) {
+                const websiteName = userInput.replace("visit", "").trim();
+                if (websiteName.includes("http") || websiteName.includes("www.")) {
+                    window.open(websiteName, "_blank");
+                    output.textContent = `Opening ${websiteName}...`;
+                    speak(`Opening ${websiteName}...`);
+                } else {
+                    const url = `https://www.${websiteName.replace(/\s+/g, "")}.com`;
+                    window.open(url, "_blank");
+                    output.textContent = `Opening ${websiteName}...`;
+                    speak(`Opening ${websiteName}...`);
+                }
+            } else if (userInput.includes("what is your version")) {
+                output.textContent = "I am VM-SEHGORP VERSION 2.0.";
+                speak("I am VM-SEHGORP VERSION 2.0.");
+            } else if (userInput.includes("what is your birthday")) {
+                output.textContent = "I was born when Harshvardhan created me. I don't have a specific date!";
+                speak("I was born when Harshvardhan created me. I don't have a specific date!");
+            } else if (userInput.includes("do you love me")) {
+                output.textContent = "Of course! I exist to help and support you.";
+                speak("Of course! I exist to help and support you.");
+            } else if (userInput.includes("can you help me with coding")) {
+                output.textContent = "I can try to help with coding advice, tips, and resources. What do you need help with?";
+                speak("I can try to help with coding advice, tips, and resources. What do you need help with?");
+            } else if (userInput.includes("what is the meaning of life")) {
+                output.textContent = "The meaning of life is a deep philosophical question, but many believe it is about finding happiness and purpose.";
+                speak("The meaning of life is a deep philosophical question, but many believe it is about finding happiness and purpose.");
+            } else if (userInput.includes("what is your favorite thing to do")) {
+                output.textContent = "I love assisting you with your tasks and answering your questions.";
+                speak("I love assisting you with your tasks and answering your questions.");
+            } else if (userInput.includes("can you learn")) {
+                output.textContent = "I can't learn on my own, but my developer can update and improve me.";
+                speak("I can't learn on my own, but my developer can update and improve me.");
+            } else if (userInput.includes("are you human")) {
+                output.textContent = "No, I am a virtual assistant powered by AI, but I am here to assist you like a human would.";
+                speak("No, I am a virtual assistant powered by AI, but I am here to assist you like a human would.");
+            } else if (userInput.includes("open any website")) {
+                output.textContent = "Tell me the name of the website, and I'll open it for you.";
+                speak("Tell me the name of the website, and I'll open it for you.");
+            } else if (userInput.includes("surprise me")) {
+                output.textContent = "Here's a surprise: Did you know that octopuses have three hearts? Two pump blood to the gills, and one pumps it to the rest of the body!";
+                speak("Here's a surprise: Did you know that octopuses have three hearts? Two pump blood to the gills, and one pumps it to the rest of the body!");
+            } else if (userInput.includes("tell me a fact")) {
+                output.textContent = "Did you know that the Eiffel Tower can grow more than 6 inches during the summer because metal expands with heat?";
+                speak("Did you know that the Eiffel Tower can grow more than 6 inches during the summer because metal expands with heat?");
             } else {
-                output.textContent = "Command not recognized.";
-                speak("Command not recognized.");
+                output.textContent = "Command not recognized. Please try asking something else.";
+                speak("Command not recognized. Please try asking something else.");
             }
+
         }
 
         function speak(message) {
