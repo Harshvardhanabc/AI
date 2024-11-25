@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM-SEHGORP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+        <h1 class="text-2xl font-bold mb-4">VM-SEHGORP</h1>
+        <p class="text-gray-600 mb-6">Harshvardhan</p>
+        <p id="output" class="text-gray-800 mb-4"></p>
+        <input type="text" id="userInput" placeholder="Speak or type your command..." class="w-full p-2 border border-gray-300 rounded mb-4">
+        <div class="flex justify-center space-x-4">
+            <button onclick="submitCommand()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
+            <button onclick="startVoiceRecognition()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Speak</button>
+        </div>
+    </div>
+
+    <script>
+        function submitCommand() {
+            var userInput = document.getElementById("userInput").value.toLowerCase();
+            handleCommand(userInput);
+        }
+
+        function startVoiceRecognition() {
+            var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+            
+            recognition.onresult = function(event) {
+                var userInput = event.results[0][0].transcript.toLowerCase();
+                handleCommand(userInput);
+            };
+        }
+
+        function handleCommand(userInput) {
+            var output = document.getElementById("output");
+
+            // Handle user commands
+            if (userInput.includes("hello")) {
+                output.textContent = "Hello! How can I assist you?";
+                speak("Hello! How can I assist you?");
+            } else if (userInput.includes("open youtube")) {
+                window.open("https://www.youtube.com", "_blank");
+                output.textContent = "Opening YouTube...";
+                speak("Opening YouTube...");
+            } else if (userInput.includes("play music")) {
+                window.open("https://open.spotify.com", "_blank");
+                output.textContent = "Playing music...";
+                speak("Playing music...");
+            } else if (userInput.includes("open google")) {
+                window.open("https://www.google.com", "_blank");
+                output.textContent = "Opening Google...";
+                speak("Opening Google...");
+            } else if (userInput.includes("open github")) {
+                window.open("https://www.github.com", "_blank");
+                output.textContent = "Opening Github...";
+                speak("Opening Github...");
+            } else if (userInput.includes("who are you")) {
+                output.textContent = "Myself VM-SEHGORP VERSION 2.O and I am a very intelligent AI software and I was developed by Master Harshvardhan and I only obey their commands.";
+                speak("Myself VM-SEHGORP VERSION 2.O and I am a very intelligent AI software and I was developed by Master Harshvardhan and I only obey their commands.");
+            } else if (userInput.includes("what is your name")) {
+                output.textContent = "I am VM-SEHGORP, your virtual assistant.";
+                speak("I am VM-SEHGORP, your virtual assistant.");
+            } else if (userInput.includes("what can you do")) {
+                output.textContent = "I can open websites, play music, and answer your questions.";
+                speak("I can open websites, play music, and answer your questions.");
+            } else if (userInput.includes("who is harshvardhan")) {
+                output.textContent = "Harshvardhan is the developer of this AI.";
+                speak("Harshvardhan is the developer of this AI.");
+            } else if (userInput.includes("tell me a joke")) {
+                output.textContent = "Why don't scientists trust atoms? Because they make up everything!";
+                speak("Why don't scientists trust atoms? Because they make up everything!");
+            } else {
+                output.textContent = "Command not recognized.";
+                speak("Command not recognized.");
+            }
+        }
+
+        function speak(message) {
+            var speech = new SpeechSynthesisUtterance();
+            speech.lang = 'en-US';
+            speech.text = message;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
